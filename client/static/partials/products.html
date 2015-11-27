@@ -1,0 +1,39 @@
+<div ng-controller="productsController as productsCtrl">
+   
+    <div id="side">
+    <input type="text">
+    <button>Filter</button>
+    <h4>Add a new Product</h4>
+    Name:<input type="text" placeholder="name..." ng-model="productsCtrl.newProduct.name">
+    Image:<input type="text" value="http://">
+    Description<textarea ng-model="productsCtrl.newProduct.description"></textarea>
+    Initial Quantity:<input type="text" ng-model="productsCtrl.newProduct.qty">
+        <input type="submit" value="Create" ng-click="productsCtrl.addProduct()">
+    </div>
+        <div id="main">
+            <div class="products" ng-repeat="product in productsCtrl.products track by $index">
+                <span ng-bind="product.name"></span><br>
+                (<span ng-bind="product.qty"></span> left)
+            <div>
+        </div>
+</div>
+<style>
+*{
+    outline: 1px dotted red;
+}
+.products{
+    width:120px;
+    height:120px;
+    display: inline-block;
+}
+#side{
+    width:25%;
+    height:800px;
+    display: inline-block;
+}
+#main{
+    width:70%;
+    display: inline-block;
+    vertical-align: top;
+}
+</style>

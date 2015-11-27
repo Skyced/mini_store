@@ -1,0 +1,38 @@
+<div ng-controller="ordersController as ordersCtrl">
+<h3>Add a new order</h3>
+<form>
+Customer <select
+            ng-model="ordersCtrl.newOrder"
+            ng-options="option.name for option in ordersCtrl.customers"
+            >
+        </select>
+       <!--  <select>
+            <option
+                ng-selected="ordersCtrl.customers"
+                ng-repeat="customer in ordersCtrl.customers"
+                ng-value="customer.name">
+            {{customer.name}}</option>
+        </select> -->
+Quantity <input type="number" ng-model="ordersCtrl.newOrder.qty" min="1">
+Order <select
+    ng-model="ordersCtrl.newOrder.product"
+    ng-options="option.name for option in ordersCtrl.products"
+>
+</select>
+<input type="submit" value="Order" ng-click="ordersCtrl.addOrder()">
+<input type="text" placeholder="filter..." ng-model="filter_name">
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+    </tr>
+    <tr ng-repeat="order in ordersCtrl.orders | filter:filter_name">
+        <td ng-bind="order.name"></td>
+        <td ng-bind="order.product"></td>
+        <td ng-bind='order.qty'></td>
+        <td ng-bind="order.date | date:medium"></td>
+    </tr>
+</table>
+</div>

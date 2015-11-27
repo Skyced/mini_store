@@ -1,0 +1,55 @@
+<div ng-controller="dashController as dash">
+    <div id="side">
+        <input type="text" id="text" placeholder="search.." ng-model="filter_name">
+    </div>
+    <div id="main">
+        <div id="products">
+            <div class="product" ng-repeat="product in dash.products track by $index| filter:filter_name">
+                <span ng-bind="product.name"></span><br>
+                (<span ng-bind="product.qty"></span> left)
+            </div>
+        </div>
+        <div id="orders">
+
+            <h4>Recent Orders</h4>
+            <div class='order' ng-repeat="order in dash.orders track by $index | filter:filter_name">
+                <span ng-bind="order.name"></span> purchased <span ng-bind="order.qty"></span> <span ng-bind="order.product"></span>...(<span am-time-ago="order.date"></span>)
+        </div>
+        <div id="customers">
+            <h4>New Customers</h4>
+            <div class="customer" ng-repeat="customer in dash.customers track by $index | filter:filter_name">
+                <span ng-bind="customer.name"></span> joined the store. (<span am-time-ago="customer.created_date"></span>)
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+*{
+    outline: 1px dotted red;
+}
+.product{
+    
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+#products, #orders, #customers{
+    width: 90%;
+    height: 150px;
+}
+#text{
+    width: 100px
+}
+#side{
+    padding-top:50px;
+    vertical-align: top;
+    width:20%;
+    height:800px;
+    display: inline-block;
+}
+#main{
+    width:75%;
+    height:800px;
+    display: inline-block;
+}
+</style>

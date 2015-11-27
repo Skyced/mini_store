@@ -1,0 +1,42 @@
+<DOCTYPE! html>
+<html ng-app='myApp'>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
+    <script src="angular_moment.js"></script>
+    <script src="moment/moment.js"></script>
+    <script src="angular-moment/angular-moment.js"></script>
+    <title>Mean Mini</title>
+    <script>
+    var myApp = angular.module('myApp', ['ngRoute', 'angularMoment']);
+
+    myApp.config(function ($routeProvider){
+        $routeProvider
+            .when('/',{
+                templateUrl: 'partials/customers.html'
+            })
+            .when('/orders',{
+                templateUrl: 'partials/orders.html'
+            })
+            .when('/products',{
+                templateUrl: 'partials/products.html'
+            })
+            .when('/dashboard',{
+                templateUrl: 'partials/dashboard.html'
+            })
+    })
+    </script>
+    <script src="factories/customers.js"></script>
+    <script src="factories/products.js"></script>
+    <script src="factories/orders.js"></script>
+    <script src="controllers/customers.js"></script>
+    <script src="controllers/products.js"></script>
+    <script src="controllers/orders.js"></script>
+    <script src="controllers/dash.js"></script>
+</head>
+<body>
+    <a href="#/dashboard">Dashboard</a> | <a href="#/products">Products</a> | <a href="#/">Customers</a> | <a href="#/orders">Orders</a> | <a href="#/settings">Settings</a>
+    <div ng-view="">
+    </div>
+</body>
+</html>
